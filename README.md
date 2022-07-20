@@ -18,7 +18,7 @@ Instructions for macOS:
    </code>  
 5. Use your favorite IDE (for example, PyCharm)
 
-Please use repository <repo> as a reference 
+Please use repository https://bitbucket.org/kaliningleb25/test-automation-for-dqe-part1-pytest/src/master/ as a reference 
 (You should have an access to the repository. If you don't have an access please let me know via email - Gleb_Kalinin@epam.com with Subject 'DQ Automation repository access')
 
 ---
