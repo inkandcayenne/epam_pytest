@@ -1,45 +1,65 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+## Test Automation Part 1 PyTest HW
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+In this task you will create a project for running PyTest and perform basic testing of data from OrangeHRM website (https://opensource-demo.orangehrmlive.com/)
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+**Prerequisites**:  
+1. Install Python  
+2. Install PyTest  
+3. Install Selenium Library  
+4. Install chromedriver    
+Instructions for macOS:    
+    <code>
+    $ cd $HOME/Downloads  
+    $ wget http://chromedriver.storage.googleapis.com/2.22/chromedriver_mac32.zip  
+    $ unzip chromedriver_mac32.zip  
+    $ mkdir -p $HOME/bin  
+    $ mv chromedriver $HOME/bin  
+    $ echo "export PATH=$PATH:$HOME/bin" >> $HOME/.bash_profile  
+   </code>  
+5. Use your favorite IDE (for example, PyCharm)
 
----
-
-## Edit a file
-
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
-
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
-
----
-
-## Create a file
-
-Next, you’ll add a new file to this repository.
-
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
-
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+Please use repository <repo> as a reference 
+(You should have an access to the repository. If you don't have an access please let me know via email - Gleb_Kalinin@epam.com with Subject 'DQ Automation repository access')
 
 ---
 
-## Clone a repository
+## Task
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+1. Create a project for running PyTest  
+You can fork **this project** as a template or create your own from scratch
+2. Implement test_login() function to login to the website https://opensource-demo.orangehrmlive.com/
+3. Implement get_table() function in main.py  
+(*20 points*)  
+Expected result - dictionary with column name as a KEY and list of records as a VALUE  
+Hint: Use Selenium to login, go to Admin page, and get table with users
+4. Implement test_data() function in main.py  
+(*20 points*)  
+Hint: use assert on list of errors from each DQ check (```assert not list_of_errors```)
+5. Create 5 DIFFERENT test cases for data checks on OrangeHRM website and document them  
+(*40 points*)  
+Examples:  
+- All records are completed (no blank values)  
+- All records have length less than expected max length  
+- All records have only allowed values
+5. Create README
+(*20 points*)
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+---
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+## Expected result
+
+1. Repository with python files  
+Suggested structure:  
+```
+main.py
+checker.py
+README.md
+```
+
+## Grades
+
+- 5 stars - 100 points
+- 4 stars - 80 points
+- 3 stars - 60 points
+- 2 stars - 40 points
+- 1 star - 20 points
