@@ -1,38 +1,18 @@
-Hello PyTest task
 
-In this task you will create a project for running PyTest and perform basic testing of data from "AdventureWorks2012" database via SQL statements.
+# Test cases:
+|      Test name      |Description |                       Source                       | Rule | Expected result |
+|:-------------------:|:----------:|:--------------------------------------------------:|:----:|:----------------|
+|  test_future_dates  |  checks if employee's hire date is not in the future   | EPGETBIW0395, table hr.employees, field: hire_date |select * from hr.employees where hire > today| 0 rows|
+| test_allowed_values |  employee's department is in the range of allowed values (from 1 to 11)   | EPGETBIW0395, table hr.employees, field: department_id |select * from hr.employees where department_id is not in (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11)| 0 rows|
+|test_country_length|  checks if country's id format is only 2 characters long| EPGETBIW0395, table hr.countries, field: country_id|select * from hr.countries where len(country_id) <> 2| 0 rows|
+|  test_postal_codes  |  checks if postal codes are not empty| EPGETBIW0395, table hr.locations, field: postal_code |select * from hr.locations where postal_code is null| 0 rows|
+|  test_country_uniqueness  |  checks if countries are unique|EPGETBIW0395, table hr.countries, field: country_name|select country_name, count(*) from hr.countries group by country_name having count(*) > 1| 0 rows|
+|  test_min_max_salary  |  checks if minimal employees' salary is actually less than maximum salary|EPGETBIW0395, table hr.jobs, field: min_salary, max_salary|select min_salary, max_salary from hr.jobs where min_salary < max_salary| 0 rows|
 
-# Task:
-1. Create 2 DIFFERENT test cases for data checks on "AdventureWorks2012" database (3 different tables) and document them (name, steps, expected results).
-Example TC#1 count for column; TC#2 average function for column, TC#3 max\min values, TC#4 values in range of list ...... etc.
-Tables to use: 
--[Person].[Address]
--[Production].[Document]
--[Production].[UnitMeasure]
-As a result you should have 6 different test cases for 3 different tables (2 per table).
-2. Create a project for running Pytest tests.
-3. Automate test cases from step 1 so that they can connect to MS SQL DB from SQL Module on your localhost.
-4. Store a test report.
+# Tests launch:
+Open command line, go to the repository location and launch:
+python pytest test_checker.py
 
-# Expected output:
-Git project on git.epam.com with test cases file, code project and test report example. 
-Please write a meaningful Readme file, that will help to understand how anyone can use your project.
-
-# Helpful links:
-- Python SQL Driver https://learn.microsoft.com/en-us/sql/connect/python/pyodbc/python-sql-driver-pyodbc?view=sql-server-ver16
-- PyTest https://realpython.com/pytest-python-testing/
-- PyTest and SQL https://itnext.io/setting-up-transactional-tests-with-pytest-and-sqlalchemy-b2d726347629
-- SQL Connection https://learn.microsoft.com/en-us/sql/connect/jdbc/building-the-connection-url?view=sql-server-ver16
-- SQL Create User https://www.tutorialspoint.com/ms_sql_server/ms_sql_server_create_users.htm
-
-# Hints:
-- Don't forget to restart MS SQL server after user creation
-- Debug connection issues via ERRORLOG of MS SQL Server
-
-# Grades:
-1. Test cases are well documented, meaninfull and different - 40 points
-2. Pytest project is well structured and all tests work just fine on other machine according to Readme instructions - 40 points
-3. Test report is present and easy to use - 10 points.
-4. Code is following PEP8 recommendations - 10 points.
-
-Pass grade is 80.
+My launch attempts (tried to launch pytest as module, also renamed directories and files as per naming convention):
+![img.png](img.png)
+![img_1.png](img_1.png)
