@@ -12,7 +12,7 @@
 # Tests launch:
 Run pip install -r requirements.txt
 Open command line, go to the repository location and launch:
-python pytest test_checker.py
+pytest -p no:cacheprovider --html=report.html 
 
 My launch attempts (tried to launch pytest as module, also renamed directories and files as per naming convention):
 ![img.png](img.png)
