@@ -10,6 +10,7 @@
 |  test_min_max_salary  |  checks if minimal employees' salary is actually less than maximum salary|EPGETBIW0395, table hr.jobs, field: min_salary, max_salary|select min_salary, max_salary from hr.jobs where min_salary < max_salary| 0 rows|
 
 # Tests launch:
+Run pip install -r requirements.txt
 Open command line, go to the repository location and launch:
 python pytest test_checker.py
 
