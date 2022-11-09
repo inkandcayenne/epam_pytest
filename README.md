@@ -14,6 +14,5 @@ Run pip install -r requirements.txt
 Open command line, go to the repository location and launch:
 pytest -p no:cacheprovider --html=report.html 
 
-My launch attempts (tried to launch pytest as module, also renamed directories and files as per naming convention):
-![img.png](img.png)
-![img_1.png](img_1.png)
+Test report example:
+report.html
