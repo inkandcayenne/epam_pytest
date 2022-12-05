@@ -7,6 +7,12 @@ pipeline {
                 sh 'pip install -r requirements.txt'
                 }
                 }
+      stage('install pyodbc') {
+              steps{
+                      sh 'sudo apt install unixodbc-dev'
+                      sh 'sudo apt-get update'
+                      }
+                      }
 
       stage('run tests') {
         steps{
