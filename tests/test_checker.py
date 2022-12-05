@@ -1,7 +1,7 @@
-# import pyodbc
-# import pytest
-# from datetime import date
-# import logging
+import pyodbc
+import pytest
+from datetime import date
+import logging
 
 
 @pytest.fixture
