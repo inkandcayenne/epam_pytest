@@ -9,7 +9,7 @@ def connect_to_db():
     """function to connect to local database. Function uses DSN name EPGETBIW0395 in the system and logins under
     testuser return cursor which should be used in queries to DB """
     conn = pyodbc.connect(
-        'DSN=EPGETBIW0395;Driver=ODBC Driver 17 for SQL Server;UID=testuser;PWD=TestPassword!;Trusted_Connection=yes;TrustServerCertificate'
+        'DSN=EPGETBIW0395;Driver={ODBC Driver 17 for SQL Server};UID=testuser;PWD=TestPassword!;Trusted_Connection=yes;TrustServerCertificate'
         '=yes;DATABASE=TRN')
     cursor = conn.cursor()
     return cursor
