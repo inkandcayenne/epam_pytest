@@ -4,8 +4,8 @@ pipeline {
    stages {
       stage('git copy') {
         steps{
-                git checkout master
-                git merge -s theirs new_feature
+                sh 'git checkout master'
+                sh 'git merge -s new_feature'
                 }
                 }
 
