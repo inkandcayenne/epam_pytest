@@ -2,6 +2,7 @@ import pyodbc
 import pytest
 from datetime import date
 import logging
+import pymssql
 
 print(pyodbc.dataSources())
 
@@ -9,10 +10,17 @@ print(pyodbc.dataSources())
 def connect_to_db():
     """function to connect to local database. Function uses DSN name EPGETBIW0395 in the system and logins under
     testuser return cursor which should be used in queries to DB """
-    conn = pyodbc.connect(
-        'Driver={ODBC Driver 18 for SQL Server};Server=EPGETBIW0395\SQLEXPRESS;UID=testuser;PWD=TestPassword!;Trusted_Connection=yes;TrustServerCertificate'
-        '=yes;DATABASE=TRN')
-    cursor = conn.cursor()
+    # conn = pyodbc.connect(
+    #     'Driver={ODBC Driver 18 for SQL Server};Server=EPGETBIW0395\SQLEXPRESS;UID=testuser;PWD=TestPassword!;Trusted_Connection=yes;TrustServerCertificate'
+    #     '=yes;DATABASE=TRN')
+    # cursor = conn.cursor()
+    test_server = 'localhost:1433'
+    test_server_1 = 'EPGETBIW0395\SQLEXPRESS'
+    test_user = 'testuser'
+    password = 'TestPassword!'
+    test_db = 'TRN'
+    db_session = pymssql.connect(server=test_server_1, user=test_user, password=password, database=test_db)
+    cursor = db_session.cursor()
     return cursor
 
 
@@ -44,7 +52,7 @@ def test_future_dates(connect_to_db):
     counter = 0
     for row in rows:
         counter += 1
-        if row.hire_date > date.today():
+        if row[5] > date.today():
             records_amount_with_future_values += 1
     get_result_by_percentage(records_amount_with_future_values, counter,
                              "employees' hire date is not in the future")
@@ -69,7 +77,7 @@ def test_allowed_values(connect_to_db, allowed_values=(i for i in range(1, 12)))
     counter = 0
     for row in rows:
         counter += 1
-        if row.department_id not in allowed_values:
+        if row[0] not in allowed_values:
             records_amount_with_wrong_department += 1
     get_result_by_percentage(records_amount_with_wrong_department, counter,
                              f"employees' department is in the list of allowed values {allowed_values}")
@@ -93,7 +101,7 @@ def test_country_length(connect_to_db):
     counter = 0
     for row in rows:
         counter += 1
-        if len(row.country_id) != 2:
+        if len(row[0]) != 2:
             records_amount_with_wrong_country_id += 1
     get_result_by_percentage(records_amount_with_wrong_country_id, counter,
                              f"country_id field is 2 characters long")
@@ -117,7 +125,7 @@ def test_postal_codes(connect_to_db):
     counter = 0
     for row in rows:
         counter += 1
-        if row.postal_code is None:
+        if row[0] is None:
             empty_postal_codes += 1
     get_result_by_percentage(empty_postal_codes, counter,
                              f"postal codes are not empty")
@@ -142,7 +150,7 @@ def test_country_uniqueness(connect_to_db):
     counter = 0
     for row in rows:
         counter += 1
-        if row.counts > 1:
+        if row[1] > 1:
             non_unique_countries += 1
     get_result_by_percentage(non_unique_countries, counter,
                              f"countries are unique")
@@ -166,7 +174,7 @@ def test_min_max_salary(connect_to_db):
     counter = 0
     for row in rows:
         counter += 1
-        if row.min_salary > row.max_salary:
+        if row[0] > row[1]:
             incorrect_salary_range += 1
     get_result_by_percentage(incorrect_salary_range, counter,
                              f"correct salary range")
