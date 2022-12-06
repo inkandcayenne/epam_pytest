@@ -6,6 +6,7 @@ pipeline {
         steps{
                 sh 'git checkout master'
                 sh 'git merge -s recursive origin/new_feature'
+                sh 'git push -u origin'
                 }
                 }
 
