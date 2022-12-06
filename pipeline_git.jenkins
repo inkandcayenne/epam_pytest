@@ -1,0 +1,13 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('git copy') {
+        steps{
+                git checkout master
+                git merge -s theirs new_feature
+                }
+                }
+
+  }
+}
