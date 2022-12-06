@@ -3,6 +3,7 @@ import pytest
 from datetime import date
 import logging
 
+print(pyodbc.dataSources())
 
 @pytest.fixture
 def connect_to_db():
