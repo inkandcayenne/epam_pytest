@@ -12,8 +12,8 @@ pipeline {
                    try {
                         bash 'git checkout -b ${merge branch} master'
                            } finally {
-                               sh 'git checkout new_feature'
-                               sh 'git push git@github.com:inkandcayenne/epam_pytest.git ${merge branch}:master'
+                               bash 'git checkout ${merge branch}'
+                               bash 'git push git@github.com:inkandcayenne/epam_pytest.git ${merge branch}:master'
                            }
                 }
                 }
