@@ -13,7 +13,7 @@ pipeline {
                         sh 'git checkout -b new_feature master'
                            } finally {
                                sh 'git checkout new_feature'
-                               sh 'git push git@github.com:inkandcayenne/epam_pytest.git origin new_feature'
+                               sh 'git push git@github.com:inkandcayenne/epam_pytest.git new_feature:master'
                            }
                 }
                 }
