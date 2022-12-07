@@ -4,11 +4,19 @@ pipeline {
    stages {
       stage('git copy') {
         steps{
+                sh 'git clone https://github.com/sntikhomirov/CI_CD_basics_for_DQE.git'
                 sh 'git checkout master'
-                sh 'git merge -s recursive origin/new_feature'
-                sh 'git push -u origin'
+                sh 'git pull'
+                script {
+                   try {
+                        sh 'git checkout -b new_feature master'
+                           } finally {
+                               sh 'git checkout new_feature'
+                               sh 'git push origin new_feature'
+                           }
                 }
                 }
 
   }
+}
 }
