@@ -4,7 +4,8 @@ pipeline {
    stages {
       stage('git copy') {
         steps{
-                sh 'git clone https://github.com/inkandcayenne/epam_pytest.git .'
+                sh 'rm -r epam_pytest'
+                sh 'git clone https://github.com/inkandcayenne/epam_pytest.git'
                 sh 'git checkout master'
                 sh 'git pull'
                 script {
