@@ -10,10 +10,10 @@ pipeline {
                 sh 'git pull'
                 script {
                    try {
-                        bash 'git checkout -b ${merge branch} master'
+                        sh 'git checkout -b $(merge branch) master'
                            } finally {
-                               bash 'git checkout ${merge branch}'
-                               bash 'git push git@github.com:inkandcayenne/epam_pytest.git ${merge branch}:master'
+                               bash 'git checkout $(merge branch)'
+                               bash 'git push git@github.com:inkandcayenne/epam_pytest.git $(merge branch):master'
                            }
                 }
                 }
