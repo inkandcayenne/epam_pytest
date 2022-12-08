@@ -13,7 +13,7 @@ pipeline {
                         sh 'git checkout -b $(merge branch) master'
                            } finally {
                                sh 'git checkout $(merge branch)'
-                               sh 'git push git@github.com:inkandcayenne/epam_pytest.git $(merge branch):master'
+                               sh 'git push origin $(merge branch)'
                            }
                 }
                 }
