@@ -10,10 +10,10 @@ pipeline {
                 sh 'git pull'
                 script {
                    try {
-                        sh 'git checkout -b $(params.merge_branch) master'
+                        sh 'git checkout -b params.merge_branch master'
                            } finally {
-                               sh 'git checkout $(params.merge_branch)'
-                               sh 'git push origin $(params.merge_branch)'
+                               sh 'git checkout params.merge_branch'
+                               sh 'git push origin params.merge_branch'
                            }
                 }
                 }
