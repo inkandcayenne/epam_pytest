@@ -1,0 +1,23 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('git copy') {
+        steps{
+                sh 'rm -r epam_pytest'
+                sh 'git clone https://github.com/inkandcayenne/epam_pytest.git'
+                sh 'git checkout master'
+                sh 'git pull'
+                script {
+                   try {
+                        sh 'git checkout -b ${merge branch} master'
+                           } finally {
+                               sh 'git checkout ${merge branch}'
+                               sh 'git push origin ${merge branch}'
+                           }
+                }
+                }
+
+  }
+}
+}

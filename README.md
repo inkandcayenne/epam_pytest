@@ -12,7 +12,7 @@
 # Tests launch:
 Run pip install -r requirements.txt
 Open command line, go to the repository location and launch:
-pytest -p no:cacheprovider --html=report.html 
+pytest -p no:cacheprovider --html=report.html
 
 Test report example:
 report.html
