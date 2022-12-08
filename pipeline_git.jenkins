@@ -13,7 +13,8 @@ pipeline {
                         sh 'git checkout -b release_branch master'
                            } finally {
                                sh 'git checkout release_branch'
-                               sh 'git push origin release_branch'
+                               echo "${env.TOKEN}"
+                               sh "git push https:${env.TOKEN}//@github.com:inkandcayenne/epam_pytest.git release_branch"
                            }
                 }
                 }
